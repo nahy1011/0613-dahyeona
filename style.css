@@ -24,6 +24,91 @@ body {
     min-height: 100vh;
 }
 
+/* 배경 애니메이션 블롭 (글래스모피즘용) */
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.6;
+    animation: float 10s infinite ease-in-out alternate;
+}
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: var(--primary-color);
+    animation-delay: 0s;
+}
+.blob-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 40vw;
+    height: 40vw;
+    background: var(--secondary-color);
+    animation-delay: -5s;
+}
+.blob-3 {
+    top: 40%;
+    left: 40%;
+    width: 30vw;
+    height: 30vw;
+    background: #4facfe;
+    animation-delay: -2s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(20px, -50px) scale(1.1); }
+}
+
+/* 글래스모피즘 네비게이션 바 */
+.glass-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.glass-nav .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.glass-nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.glass-nav .nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.glass-nav .nav-links a:hover {
+    color: var(--secondary-color);
+}
+
 /* 히어로 섹션 */
 .hero {
     height: 100vh;
@@ -90,6 +175,8 @@ body {
     padding: 120px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
 .section h2 {
@@ -107,14 +194,18 @@ body {
 }
 
 .feature-card {
-    /* 글래스모피즘 효과 */
-    background: rgba(255, 255, 255, 0.03);
+    /* 향상된 글래스모피즘 효과 */
+    background: rgba(255, 255, 255, 0.05);
     padding: 40px 30px;
     border-radius: 24px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+    position: relative;
+    z-index: 2;
     text-align: center;
 }
 
@@ -146,6 +237,8 @@ footer {
     padding: 40px 20px;
     border-top: 1px solid rgba(255,255,255,0.05);
     color: #888;
+    position: relative;
+    z-index: 2;
 }
 
 /* 애니메이션 */
