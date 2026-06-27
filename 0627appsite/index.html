@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduLauncher - 교육용 학습 웹앱 통합 포털</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- GNB -->
+    <header class="gnb">
+        <div class="gnb-container">
+            <div class="logo">🚀 EduLauncher</div>
+            <nav class="gnb-nav">
+                <a href="#" class="active">전체 앱</a>
+                <a href="#">카테고리</a>
+            </nav>
+            <button id="addAppBtn" class="btn-primary">앱 추가 (관리자)</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>무엇을 학습할까요?</h1>
+            <p>필요한 교육용 앱을 빠르게 찾고 실행해보세요.</p>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="앱 이름, 카테고리 등 키워드 검색...">
+                <button class="btn-search">🔍</button>
+            </div>
+            <div class="stats">
+                <span>총 앱 개수: <strong id="totalAppsStat">0</strong>개</span>
+            </div>
+        </section>
+
+        <!-- Category & Filter -->
+        <section class="category-filter">
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-btn active" data-category="all">전체</button>
+                <button class="filter-btn" data-category="수학">수학</button>
+                <button class="filter-btn" data-category="영어">영어</button>
+                <button class="filter-btn" data-category="코딩">코딩</button>
+                <button class="filter-btn" data-category="초등">초등</button>
+                <button class="filter-btn" data-category="중등">중등</button>
+                <button class="filter-btn" data-category="퀴즈형">퀴즈형</button>
+            </div>
+        </section>
+
+        <!-- App Launcher Grid -->
+        <section class="app-grid" id="appGrid">
+            <!-- App cards will be dynamically injected here -->
+        </section>
+    </main>
+
+    <!-- Admin Modal -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+            <h2>새 웹앱 등록</h2>
+            
+            <form id="addAppForm">
+                <div class="form-group">
+                    <label for="adminCode">관리자 비밀번호</label>
+                    <input type="password" id="adminCode" required placeholder="비밀번호를 입력하세요 (예: admin123)">
+                </div>
+
+                <div class="form-group">
+                    <label for="appTitle">앱 제목</label>
+                    <input type="text" id="appTitle" required placeholder="예: 분수 마스터 퀴즈">
+                </div>
+
+                <div class="form-group">
+                    <label for="appUrl">앱 링크 (URL)</label>
+                    <input type="url" id="appUrl" required placeholder="https://...">
+                </div>
+
+                <div class="form-group">
+                    <label for="appCategory">카테고리 (쉼표로 구분)</label>
+                    <input type="text" id="appCategory" required placeholder="예: 수학,초등,퀴즈형">
+                </div>
+
+                <div class="form-group">
+                    <label for="appThumbnail">썸네일 이미지</label>
+                    <input type="file" id="appThumbnail" accept="image/*" required>
+                    <div class="image-preview" id="imagePreview">이미지 미리보기</div>
+                </div>
+
+                <button type="submit" class="btn-submit">등록하기</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- App Runner Modal (Iframe) -->
+    <div class="modal-overlay" id="runnerModal">
+        <div class="runner-content">
+            <div class="runner-header">
+                <h3 id="runnerTitle">앱 실행 중</h3>
+                <div>
+                    <a href="#" id="runnerNewTab" target="_blank" class="btn-secondary">새 창으로 열기</a>
+                    <button class="close-btn" id="closeRunnerBtn">&times;</button>
+                </div>
+            </div>
+            <iframe id="runnerIframe" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" id="openTermsBtn">이용약관</a> | 
+                <a href="#" id="openPrivacyBtn">개인정보처리방침</a>
+            </div>
+            <div class="footer-info">
+                <span>정보관리책임자: 관리자 (admin@edulauncher.com)</span>
+                <span>&copy; 2026 EduLauncher. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Policy Modal -->
+    <div class="modal-overlay" id="policyModal">
+        <div class="modal-content policy-content">
+            <button class="close-btn" id="closePolicyBtn">&times;</button>
+            <h2 id="policyTitle">이용약관</h2>
+            <div class="policy-text-area" id="policyText">
+                <!-- Text will be injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
